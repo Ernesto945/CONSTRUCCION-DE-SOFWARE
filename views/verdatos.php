@@ -2,6 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
 if (!isset($_SESSION["txtusername"])) {
     header('Location: ' . get_UrlBase('index.php'));
     exit();
@@ -31,25 +32,33 @@ $query = $pdo->query("SELECT id, username, password, perfil FROM usuarios");
 <div class="container">
         <h2>Lista de Usuarios del Sistema</h2>
         <table>
-            <tr>
-                <th>ID</th> 
-                <th>Username</th>
-                <th>Password</th>
-                <th>Perfil</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>ID</th> 
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Perfil</th>
+                </tr>
+            </thead>
+            <tbody>
             <?php
             // Ejecutar consulta y mostrar los datos
             while ($fila = $query->fetch(PDO::FETCH_ASSOC)) {
+                // Use htmlspecialchars to sanitize output
+                $username = htmlspecialchars($fila['username']);
+                $perfil = htmlspecialchars($fila['perfil']);
+                $password = "*****"; // Mask the password (we don't want to show it)
             ?>
             <tr>
                 <td><?php echo $fila['id']; ?></td>
-                <td><?php echo $fila['username']; ?></td>
-                <td><?php echo $fila['password']; ?></td>
-                <td><?php echo $fila['perfil']; ?></td>
+                <td><?php echo $username; ?></td>
+                <td><?php echo $password; ?></td>
+                <td><?php echo $perfil; ?></td>
             </tr>
             <?php
             }
             ?>
+            </tbody>
         </table>
     </div>
 </body>
