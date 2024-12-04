@@ -15,14 +15,18 @@ session_start();
     <h2>Session Variables</h2>
     <?php
     if (isset($_SESSION["txtusername"])) {
-        echo "Username: " . $_SESSION["txtusername"] . "<br>";
-        echo "Password: " . $_SESSION["txtpassword"] . "<br>";
+        echo "Username: " . htmlspecialchars($_SESSION["txtusername"]) . "<br>";
+        echo "Password: ******<br>";  // Masking the password for security
     } else {
         echo "No session variables set.";
     }
     ?>
     <br>
     <a href="index.php">Go to Login</a>
+
+    <!-- Option to logout and clear session -->
+    <br>
+    <a href="logout.php">Logout and Clear Session</a>
 </body>
 
 </html>
