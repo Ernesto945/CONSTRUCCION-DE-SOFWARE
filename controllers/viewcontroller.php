@@ -12,7 +12,8 @@ class ViewController {
                 return $this->modificar();
             case "eliminar":
                 return $this->eliminar();
-
+            default:
+                return "<p>Error: Opción no válida.</p>";
         }
     }
 
@@ -21,24 +22,30 @@ class ViewController {
     }
 
     private function ver() {
-
-        include $_SERVER['DOCUMENT_ROOT'] . '/views/verdatos.php';
-        
+        return $this->includeView('/views/verdatos.php');
     }
 
     private function ingresar() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/views/ingresardatos.php';
-
+        return $this->includeView('/views/ingresardatos.php');
     }
 
     private function modificar() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/views/modificardatos.php';
-      
+        return $this->includeView('/views/modificardatos.php');
     }
 
     private function eliminar() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/views/eliminardatos.php';
-   
+        return $this->includeView('/views/eliminardatos.php');
+    }
+
+    private function includeView($relativePath) {
+        $filePath = $_SERVER['DOCUMENT_ROOT'] . $relativePath;
+        if (file_exists($filePath)) {
+            ob_start();
+            include $filePath;
+            return ob_get_clean(); // Captura y devuelve la salida de la vista
+        } else {
+            return "<p>Error: No se encontró la vista requerida ($relativePath).</p>";
+        }
     }
 }
 ?>
