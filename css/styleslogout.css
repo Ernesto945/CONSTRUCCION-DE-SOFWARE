@@ -3,17 +3,17 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-  }
-  
-  body {
+}
+
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color: #f4f4f4;
-  }
-  
-  .wrapper {
+}
+
+.wrapper {
     width: 100%;
     max-width: 450px;
     background-color: rgba(0, 0, 0, 0.8);
@@ -26,20 +26,24 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-  }
-  
-  .wrapper h1 {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.wrapper h1 {
     font-size: 36px;
     color: #fff;
-  }
-  
-  .wrapper .message {
+}
+
+.wrapper .message {
     font-size: 18px;
     color: #fff;
     margin: 20px 0;
-  }
-  
-  .wrapper .btn {
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+.wrapper .btn {
     width: 100%;
     height: 45px;
     background: #1fc7f1;
@@ -50,9 +54,19 @@
     font-size: 16px;
     color: #000;
     font-weight: 600;
-  }
-  
-  .wrapper .btn:hover {
+    transition: transform 0.2s;
+}
+
+.wrapper .btn:hover {
     background: #0e97b1;
-  }
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        width: 90%;
+        padding: 20px 30px;
+    }
+}
+
   
