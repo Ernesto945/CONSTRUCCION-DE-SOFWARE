@@ -1,9 +1,17 @@
 <?php
 session_start();
+
+// Redirect to login page if user is not logged in
 if (!isset($_SESSION["txtusername"])) {
     header('Location: index.php');
     exit();
 }
+
+// Optionally, you can check for user roles here and modify the menu accordingly
+// For example:
+// if ($_SESSION["role"] === 'admin') {
+//     // Show additional admin options
+// }
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +26,7 @@ if (!isset($_SESSION["txtusername"])) {
 
 <body>
     <div class="menu">
-        <h3>Welcome, <?php echo $_SESSION["txtusername"]; ?></h3>
+        <h3>Welcome, <?php echo htmlspecialchars($_SESSION["txtusername"]); ?></h3>
         <ul>
             <li><a href="?opcion=inicio">Inicio</a></li>
             <li><a href="?opcion=ver">Ver</a></li>
