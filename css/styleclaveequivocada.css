@@ -3,23 +3,23 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-  }
-  
-  body {
+}
+
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url('login.jpg'); 
+    background-image: url('login.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-  }
-  
-  .wrapper {
+}
+
+.wrapper {
     width: 100%;
     max-width: 450px;
-    background-color: rgba(255, 0, 0, 0.8); /* Rojo para indicar error */
+    background-color: rgba(255, 0, 0, 0.8);
     border: 2px solid #ff0000;
     backdrop-filter: blur(20px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -31,37 +31,37 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .wrapper h1 {
-    font-size: 36px;
     text-align: center;
+}
+
+.wrapper h1 {
+    font-size: 36px;
     color: #fff;
-    position: relative;
     margin-bottom: 20px;
-  }
-  
-  .wrapper h1::before {
+    position: relative;
+}
+
+.wrapper h1::before {
     content: "";
     position: absolute;
     width: 450px;
     height: 40px;
-    background-color: #ff0000; /* Color de fondo rojo */
+    background-color: #ff0000;
     top: -30px;
     left: 50%;
-    transform: translatex(-50%);
+    transform: translateX(-50%);
     border-radius: 50px 50px 0 0;
-  }
-  
-  .wrapper .input-box {
+}
+
+.input-box {
     width: 100%;
     height: 50px;
     background: #fff;
     margin: 15px 0;
     position: relative;
-  }
-  
-  .input-box input {
+}
+
+.input-box input {
     width: 100%;
     height: 100%;
     background: #fff;
@@ -72,9 +72,14 @@
     font-size: 16px;
     color: #000;
     padding: 20px 45px 20px 20px;
-  }
-  
-  .wrapper .btn {
+    transition: border-color 0.3s ease;
+}
+
+.input-box input:focus {
+    border-color: #cc0000;
+}
+
+.wrapper .btn {
     width: 100%;
     height: 45px;
     background: #ff0000;
@@ -85,5 +90,21 @@
     font-size: 16px;
     color: #fff;
     font-weight: 600;
-  }
-  
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wrapper .btn:hover {
+    background: #cc0000;
+    box-shadow: 0 0 15px #ff0000;
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    .wrapper h1::before {
+        width: 90%;
+    }
+}
